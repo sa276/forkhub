@@ -6,9 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -104,6 +106,19 @@ public class Interval extends AppCompatActivity {
 
         if(MainActivity.fourth=='S')
         {
+            if(TextUtils.isEmpty(o_max) || TextUtils.isEmpty(o_min) || TextUtils.isEmpty(aplus_max) || TextUtils.isEmpty(aplus_min) ||
+                    TextUtils.isEmpty(a_min) || TextUtils.isEmpty(a_max) || TextUtils.isEmpty(bplus_max) || TextUtils.isEmpty(bplus_min) ||
+                    TextUtils.isEmpty(b_max) || TextUtils.isEmpty(b_min) || TextUtils.isEmpty(c_max) || TextUtils.isEmpty(p_max) ||
+                    TextUtils.isEmpty(p_min) || TextUtils.isEmpty(f_max) || TextUtils.isEmpty(f_min) )
+            {
+                Toast.makeText(Interval.this,"Some details are missing",Toast.LENGTH_LONG).show();
+            }
+
+
+
+
+
+
             progressDialog.setMessage("Updating Intervals...");
             progressDialog.show();
             //String type = "register";
