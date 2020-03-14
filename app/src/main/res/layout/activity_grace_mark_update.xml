@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Grace_mark_update">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="25dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardPreventCornerOverlap="false"
+            app:cardCornerRadius="25dp"
+            >
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/user_logo"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="35dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/user_logo"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="#FF000000"/>
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:id="@+id/request_animation"
+                    app:lottie_loop="true"
+                    android:layout_centerHorizontal="true"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="details.json"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name_input"
+                    android:text=""
+                    android:textSize="35sp"
+                    android:fontFamily="casual"
+                    android:layout_below="@+id/request_animation"
+                    android:layout_marginTop="25dp"
+                    android:layout_centerHorizontal="true"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#2b094f"
+                    android:layout_margin="25dp"
+                    android:layout_below="@+id/name_input"
+                    android:id="@+id/line"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GRACE MARKS          :"
+                    android:layout_below="@+id/line"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif"
+                    android:id="@+id/grace_marks_text"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/grace_marks_text"
+                    android:id="@+id/grace_marks_input"
+                    android:inputType="numberSigned"
+                    android:hint="GRACE MARKS"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="REASON       :"
+                    android:layout_below="@+id/grace_marks_input"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif"
+                    android:id="@+id/reason_text"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/reason_text"
+                    android:id="@+id/reason_input"
+                    android:inputType="text"
+                    android:hint="REASON"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="25dp"
+                    android:paddingLeft="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/reason_input"
+                    android:background="@drawable/round"
+                    android:text="UPDATE"
+                    android:onClick="update"
+                    android:paddingTop="15dp"
+                    android:layout_marginTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:textColor="#ffffff"/>
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+
+</ScrollView>

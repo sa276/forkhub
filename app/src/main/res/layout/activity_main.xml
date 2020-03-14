@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+
+
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:lottie_loop="true"
+            android:id="@+id/home_screen"
+            app:lottie_autoPlay="true"
+            android:layout_centerHorizontal="true"
+            app:lottie_fileName="login.json"/>
+
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GMA"
+            android:fontFamily="sans-serif-light"
+            android:textStyle="bold"
+            android:textSize="40sp"
+            android:id="@+id/app_name"
+            android:layout_below="@+id/home_screen"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="30dp"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:fontFamily="sans-serif-light"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:id="@+id/Login_text"
+            android:layout_below="@+id/app_name"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="30dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/username_text"
+            android:layout_below="@+id/Login_text"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:text="Username"
+            android:textSize="15sp"
+            android:fontFamily="serif"
+
+
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+
+            android:layout_marginRight="25dp"
+            android:layout_below="@+id/username_text"
+            android:inputType="text"
+            android:textColor="@android:color/black"
+            android:drawableRight="@drawable/username"
+            android:id="@+id/username_input"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/password_text"
+            android:layout_below="@+id/username_input"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="25dp"
+            android:text="Password"
+            android:textSize="15sp"
+            android:fontFamily="serif"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/password_layout"
+            android:layout_below="@+id/username_input"
+            android:layout_marginTop="20dp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@android:color/black"
+            >
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
+                android:id="@+id/password_input"
+
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember Me"
+            android:layout_below="@+id/password_layout"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/checkbox"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/login"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            android:layout_below="@+id/checkbox"
+            android:text="Login"
+            android:textColor="@android:color/white"
+            android:background="@drawable/round"
+            android:onClick="Login"
+            />
+
+
+
+
+
+    </RelativeLayout>
+</ScrollView>

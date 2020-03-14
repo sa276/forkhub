@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_mydetails"
+            android:icon="@drawable/details"
+            android:title="My Details" />
+        <item
+            android:id="@+id/nav_studdetails"
+            android:icon="@drawable/eye"
+            android:title="Student Details" />
+        <item
+            android:id="@+id/nav_update"
+            android:icon="@drawable/update"
+            android:title="Marks Updation" />
+
+        <item
+            android:id="@+id/nav_interval"
+            android:icon="@drawable/request_status"
+            android:title="Interval" />
+
+        <item
+            android:id="@+id/grade_generate"
+            android:icon="@drawable/grade"
+            android:title="Grade Generate" />
+
+
+    </group>
+
+    <item android:title="Extras">
+        <menu>
+
+            <item
+                android:id="@+id/nav_info"
+                android:icon="@drawable/recycle"
+                android:title="About" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".User_Details">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="25dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardPreventCornerOverlap="false"
+            app:cardCornerRadius="25dp"
+            >
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="35dp"
+                    app:lottie_loop="true"
+                    android:id="@+id/selection"
+                    app:lottie_autoPlay="true"
+                    android:layout_centerHorizontal="true"
+                    app:lottie_fileName="my_details.json"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name_input"
+                    android:text=""
+                    android:textSize="35sp"
+                    android:fontFamily="casual"
+                    android:layout_below="@+id/selection"
+                    android:layout_marginTop="25dp"
+                    android:layout_centerHorizontal="true"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#2b094f"
+                    android:layout_margin="25dp"
+                    android:layout_below="@+id/name_input"
+                    android:id="@+id/line"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Username                   :"
+                    android:layout_below="@+id/line"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif"
+                    android:id="@+id/username_text"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_below="@+id/line"
+                    android:layout_toRightOf="@+id/username_text"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif"
+                    android:id="@+id/username_input"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Department                :"
+                    android:layout_below="@+id/username_text"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif"
+                    android:id="@+id/dept_text"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_below="@+id/username_text"
+                    android:layout_toRightOf="@+id/dept_text"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif"
+                    android:id="@+id/dept_input"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Year                              :"
+                    android:layout_below="@+id/dept_text"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif"
+                    android:id="@+id/year_text"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_below="@+id/dept_text"
+                    android:layout_toRightOf="@+id/year_text"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif"
+                    android:id="@+id/year_input"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Section                         :"
+                    android:layout_below="@+id/year_text"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif"
+                    android:id="@+id/section_text"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_below="@+id/year_text"
+                    android:layout_toRightOf="@+id/section_text"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif"
+                    android:id="@+id/section_input"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Role                               :"
+                    android:layout_below="@+id/section_text"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif"
+                    android:id="@+id/role_text"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_below="@+id/section_text"
+                    android:layout_toRightOf="@+id/role_text"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif"
+                    android:id="@+id/role_input"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    />
+
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+</ScrollView>
