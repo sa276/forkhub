@@ -128,6 +128,82 @@ public class Test_cases {
     }
 
 
+    @Test
+    public void test_gm1() {
+        assertEquals(global_test.gm_check(8),true);
+    }
+
+    @Test
+    public void test_gm2() {
+        assertEquals(global_test.gm_check(20),true);
+    }
+
+    @Test
+    public void test_gm3() {
+        assertEquals(global_test.gm_check(-10),true);
+    }
+
+
+    @Test
+    public void test_p1() {
+        assertEquals(global_test.p1_p2(-10),true);
+    }
+
+    @Test
+    public void test_p2() {
+        assertEquals(global_test.p1_p2(100),true);
+    }
+
+    @Test
+    public void test_p3() {
+        assertEquals(global_test.p1_p2(47),true);
+    }
+
+    @Test
+    public void test_es1() {
+        assertEquals(global_test.es(100),true);
+    }
+
+    @Test
+    public void test_es2() {
+        assertEquals(global_test.es(0),true);
+    }
+
+    @Test
+    public void test_es3() {
+        assertEquals(global_test.es(-1),true);
+    }
+
+    @Test
+    public void test_at1() {
+        assertEquals(global_test.at(-1),true);
+    }
+
+    @Test
+    public void test_at2() {
+        assertEquals(global_test.at(10),true);
+    }
+
+    @Test
+    public void test_at3() {
+        assertEquals(global_test.at(4),true);
+    }
+
+    @Test
+    public void test_ca1() {
+        assertEquals(global_test.ca(5),true);
+    }
+
+    @Test
+    public void test_ca2() {
+        assertEquals(global_test.ca(-3),true);
+    }
+
+    @Test
+    public void test_ca3() {
+        assertEquals(global_test.ca(30),true);
+    }
+
 
 
 }

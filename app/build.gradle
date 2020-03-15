@@ -20,25 +20,7 @@ android {
         useLibrary 'android.test.base'
         useLibrary 'android.test.mock'
     }
-    //jacoco {
-    //    toolVersion = "0.8.5"
-    //  reportsDir = file("$buildDir/customJacocoReportDir")
-    // }
-    //sonarqube {
-    //properties {
-    // def libraries = "${project.android.sdkDirectory.getPath()}/platforms/android-28/android.jar"
-// +",${project.android.sdkDirectory.getPath()}/extras/android/support//*.jar," + "build/intermediates/exploded-aar/**/classes.jar"
-    //property "sonar.sources", "src/main/java"
-    //property "sonar.projectKey", "DigitalCourseFile"
-    //property "sonar.libraries", libraries
-//            property "sonar.tests", "src/test/java, src/androidTest/java"
-//            property "sonar.java.test.libraries", libraries
-//            property "sonar.jacoco.reportPath", "build/jacoco/testDebugUnitTest.exec"
-//            property "sonar.java.coveragePlugin", "jacoco"
-//            property "sonar.junit.reportsPath", "build/test-results/debug"
-//            property "sonar.android.lint.report", "build/outputs/lint-results"
-    //}
-    //}
+
 }
 
 dependencies {

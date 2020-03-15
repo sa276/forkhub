@@ -45,7 +45,7 @@ public class Grace_mark_update extends AppCompatActivity {
     {
         final String str_marks=marks.getText().toString();
         String str_reason=reason.getText().toString();
-        //int int_qty=Integer.parseInt(str_qty);
+
         if(TextUtils.isEmpty(str_marks))
         {
             Toast.makeText(this, "Please enter valid marks", Toast.LENGTH_SHORT).show();
@@ -58,9 +58,7 @@ public class Grace_mark_update extends AppCompatActivity {
         {
             progressDialog.setMessage("Updating...");
             progressDialog.show();
-            //String type = "register";
-            //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-            //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
+
             AsyncHttpClient client = new AsyncHttpClient();
             RequestParams params = new RequestParams();
             params.add("username", MainActivity.dummy_username);
@@ -80,18 +78,17 @@ public class Grace_mark_update extends AppCompatActivity {
                             .setTitle("ALERT")
                             .setMessage("Marks Successfully updated" )
 
-                            // Specifying a listener allows you to take an action before dismissing the dialog.
-                            // The dialog is automatically dismissed when a dialog button is clicked.
+
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // Continue with delete operation
+
                                     Intent i = new Intent(Grace_mark_update.this, User_Page.class);
                                     startActivity(i);
 
                                 }
                             })
 
-                            // A null listener allows the button to dismiss the dialog and take no further action.
+
 
 
                             .show();

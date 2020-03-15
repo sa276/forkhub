@@ -114,9 +114,7 @@ public class Interval extends AppCompatActivity {
 
                 progressDialog.setMessage("Updating Intervals...");
                 progressDialog.show();
-                //String type = "register";
-                //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-                //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
+
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
 
@@ -153,8 +151,7 @@ public class Interval extends AppCompatActivity {
                                 .setTitle("ALERT")
                                 .setMessage("Intervals updated successfully !")
 
-                                // Specifying a listener allows you to take an action before dismissing the dialog.
-                                // The dialog is automatically dismissed when a dialog button is clicked.
+
                                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         // Continue with delete operation
@@ -164,7 +161,7 @@ public class Interval extends AppCompatActivity {
                                     }
                                 })
 
-                                // A null listener allows the button to dismiss the dialog and take no further action.
+
 
 
                                 .show();
@@ -192,9 +189,7 @@ public class Interval extends AppCompatActivity {
 
                 progressDialog.setMessage("Updating Intervals...");
                 progressDialog.show();
-                //String type = "register";
-                //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-                //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
+
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
 
@@ -231,8 +226,7 @@ public class Interval extends AppCompatActivity {
                                 .setTitle("ALERT")
                                 .setMessage("Intervals updated successfully !")
 
-                                // Specifying a listener allows you to take an action before dismissing the dialog.
-                                // The dialog is automatically dismissed when a dialog button is clicked.
+
                                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         // Continue with delete operation
@@ -242,7 +236,6 @@ public class Interval extends AppCompatActivity {
                                     }
                                 })
 
-                                // A null listener allows the button to dismiss the dialog and take no further action.
 
 
                                 .show();
@@ -269,9 +262,7 @@ public class Interval extends AppCompatActivity {
 
                 progressDialog.setMessage("Updating Intervals...");
                 progressDialog.show();
-                //String type = "register";
-                //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-                //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
+
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
 
@@ -307,18 +298,16 @@ public class Interval extends AppCompatActivity {
                                 .setTitle("ALERT")
                                 .setMessage("Intervals updated successfully !")
 
-                                // Specifying a listener allows you to take an action before dismissing the dialog.
-                                // The dialog is automatically dismissed when a dialog button is clicked.
+
                                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-                                        // Continue with delete operation
+
                                         Intent i = new Intent(Interval.this, User_Page.class);
                                         startActivity(i);
 
                                     }
                                 })
 
-                                // A null listener allows the button to dismiss the dialog and take no further action.
 
 
                                 .show();

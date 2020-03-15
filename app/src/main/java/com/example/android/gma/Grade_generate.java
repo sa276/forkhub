@@ -9,11 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,11 +24,7 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.android.gma.User_Details.LVarea;
-import static com.example.android.gma.User_Details.tv1;
-import static com.example.android.gma.User_Details.tv5;
-import static com.example.android.gma.User_Details.tv6;
-import static com.example.android.gma.marks_updation.p1;
+
 import static com.loopj.android.http.AsyncHttpClient.log;
 
 public class Grade_generate extends AppCompatActivity {
@@ -100,8 +95,7 @@ public class Grade_generate extends AppCompatActivity {
                 LVarea = new String(responseBody);
                 log.v("name", LVarea);
                 displayall();
-                // Toast.makeText(User_Page.this,new String(responseBody),Toast.LENGTH_LONG).show();
-                //tv.setText("" + name + "!!!");
+
 
             }
 
@@ -132,24 +126,6 @@ public class Grade_generate extends AppCompatActivity {
                 name = new String(responseBody);
                 log.v("name", name);
                 String[] data2 = name.split("_");
-                //Intent i=new Intent(student_details.this,student_details.class);
-                //startActivity(i);
-                //new AlertDialog.Builder(Alldetails.this)
-                //.setTitle("DETAILS")
-                //.setMessage("NAME                           " + data2[0] +"\n" + "ROLL NUMBER          " + data2[1] + "\n" + "DEPARTMENT           " + data2[2] + "\n" + "YEAR                            "
-                // + data2[3] + "\n" + "SECTION                     " + data2[4]
-                //+"\n" + "SUBJECT 1          " + data2[5] + "\n" + "PERIODICAL 1           " + data2[6] +"\n" + "PERIODICAL 2              " + data2[7] + "\n" + "GRACE MARKS          " + data2[8]
-                //     + "\n" + "REASON                      " + data2[9]
-                //)
-
-                // Specifying a listener allows you to take an action before dismissing the dialog.
-                // The dialog is automatically dismissed when a dialog button is clicked.
-
-
-                // A null listener allows the button to dismiss the dialog and take no further action.
-                //.setNegativeButton(android.R.string.yes, null)
-
-                //.show();
 
                 TextView tv1 = (TextView) findViewById(R.id.name_input);
                 TextView tv2 = (TextView) findViewById(R.id.roll_input);
@@ -211,24 +187,7 @@ public class Grade_generate extends AppCompatActivity {
                 name = new String(responseBody);
                 log.v("name", name);
                 String[] data3 = name.split("_");
-                //Intent i=new Intent(student_details.this,student_details.class);
-                //startActivity(i);
-                //new AlertDialog.Builder(Alldetails.this)
-                //.setTitle("DETAILS")
-                //.setMessage("NAME                           " + data2[0] +"\n" + "ROLL NUMBER          " + data2[1] + "\n" + "DEPARTMENT           " + data2[2] + "\n" + "YEAR                            "
-                // + data2[3] + "\n" + "SECTION                     " + data2[4]
-                //+"\n" + "SUBJECT 1          " + data2[5] + "\n" + "PERIODICAL 1           " + data2[6] +"\n" + "PERIODICAL 2              " + data2[7] + "\n" + "GRACE MARKS          " + data2[8]
-                //     + "\n" + "REASON                      " + data2[9]
-                //)
 
-                // Specifying a listener allows you to take an action before dismissing the dialog.
-                // The dialog is automatically dismissed when a dialog button is clicked.
-
-
-                // A null listener allows the button to dismiss the dialog and take no further action.
-                //.setNegativeButton(android.R.string.yes, null)
-
-                //.show();
 
                 if ((data3[0].equals("N/A")) || (data3[1].equals("N/A")) || (data3[2].equals("N/A")) || (data3[3].equals("N/A"))
                         || (data3[4].equals("N/A")) || (data3[5].equals("N/A")) || (data3[6].equals("N/A")) || (data3[7].equals("N/A"))
@@ -240,7 +199,7 @@ public class Grade_generate extends AppCompatActivity {
 
                 else
                 {
-                    //Toast.makeText(Grade_generate.this," Success !!!",Toast.LENGTH_LONG).show();
+
                     log.e("s1at",data3[0]);
                     s1_at=Integer.parseInt(data3[0]);
                     s1_ca=Integer.parseInt(data3[1]);
@@ -265,11 +224,7 @@ public class Grade_generate extends AppCompatActivity {
                     float s1_cons_markf=s1_p1f +s1_p2f +s1_esf+s1_ca +s1_at;
                     s1_cons_mark= (int) s1_cons_markf;
 
-//                    log.e("s1p1",data3[5]);
-//                    log.e("s1p2",data3[6]);
-//                    log.e("s1es",data3[7]);
-//                    log.e("s1cons",data3[8]);
-//                    log.e("s1cons",""+s1_cons_mark);
+
 
                     float s2_p1f= (float) ((s2_p1/50.0)*15.0);
                     float s2_p2f=(float)((s2_p2/50.0)*15.0);
@@ -325,7 +280,7 @@ public class Grade_generate extends AppCompatActivity {
                 log.v("name", name);
                 String[] data4 = name.split("_");
 
-                //Toast.makeText(Grade_generate.this,data4[0] + " "  + data4[47],Toast.LENGTH_LONG).show();
+
                 s1o_min=Integer.parseInt(data4[0]);
                 s1o_max=Integer.parseInt(data4[1]);
                 s1aplus_min=Integer.parseInt(data4[2]);
@@ -676,7 +631,7 @@ public class Grade_generate extends AppCompatActivity {
 
         if(gm==0)
         {
-            Snackbar.make(view,"Sorry, " + name + " does not have grace marks to change the grades",Snackbar.LENGTH_LONG).setAction("ACTION",null).show();
+            Snackbar.make(view,"Sorry, " + name_to_extract + " does not have grace marks to change the grades",Snackbar.LENGTH_LONG).setAction("ACTION",null).show();
         }
 
         for(int i=0;i<3;i++)
@@ -871,6 +826,11 @@ public class Grade_generate extends AppCompatActivity {
     public void sms(View view)
     {
 
+        log.e("grade1",s1grade);
+        log.e("grade2",s2grade);
+        log.e("grade3",s3grade);
+        name_to_extract=name_to_extract.trim();
+        log.e("nametoextract",name_to_extract);
         if(MainActivity.first=='E') {
 
 
@@ -890,19 +850,20 @@ public class Grade_generate extends AppCompatActivity {
 
             progressDialog.setMessage("Sending Report...");
             progressDialog.show();
-            //String type = "register";
-            //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-            //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
+
             AsyncHttpClient client = new AsyncHttpClient();
             RequestParams params = new RequestParams();
             params.add("username", MainActivity.dummy_username);
             params.add("password", MainActivity.dummy_password);
             Alldetails.name_to_extract.trim();
-            params.add("name", Alldetails.name_to_extract);
+            params.add("name", name_to_extract);
 
             params.add("s1grade", s1grade);
             params.add("s2grade", s2grade);
             params.add("s2grade", s3grade);
+
+
+
 
             log.e("contact", sms_contact);
 
@@ -929,7 +890,6 @@ public class Grade_generate extends AppCompatActivity {
                                 }
                             })
 
-                            // A null listener allows the button to dismiss the dialog and take no further action.
 
 
                             .show();

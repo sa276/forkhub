@@ -91,7 +91,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/password_text"
             android:layout_below="@+id/username_input"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="25dp"

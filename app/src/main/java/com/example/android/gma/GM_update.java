@@ -1,6 +1,6 @@
 package com.example.android.gma;
 
-import android.app.Activity;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,18 +10,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 import cz.msebera.android.httpclient.Header;
 
@@ -58,8 +54,7 @@ public class GM_update extends AppCompatActivity {
                 LVarea=new String(responseBody);
                 log.v("name",LVarea);
                 displayall();
-                // Toast.makeText(User_Page.this,new String(responseBody),Toast.LENGTH_LONG).show();
-                //tv.setText("" + name + "!!!");
+
 
             }
 
@@ -75,14 +70,7 @@ public class GM_update extends AppCompatActivity {
     {
 
 
-        //String[] names = {"Sriraam Ashok","Siddharth CV","Sai Sanjay","Mathana Kumar",
-        //"WArun Vigesh","Shravan",LVarea};
 
-        //ArrayAdapter adapter = new ArrayAdapter<String>(this,
-        //   R.layout.listview_layout, names);
-
-        //ListView listView = (ListView) findViewById(R.id.listview);
-        //listView.setAdapter(adapter);
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.add("username",MainActivity.dummy_username);
@@ -93,9 +81,9 @@ public class GM_update extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 name=new String(responseBody);
                 log.v("name",LVarea);
-                // Toast.makeText(Alldetails.this,new String(responseBody),Toast.LENGTH_LONG).show();
+
                 String[] data = name.split("_");
-                //setter();
+
 
                 ArrayAdapter adapter = new ArrayAdapter<String>(getApplicationContext(),
                         R.layout.listview_layout,data );
@@ -111,18 +99,7 @@ public class GM_update extends AppCompatActivity {
 
 
                 });
-                //tv.setText("" + name + "!!!");
-//            try {
-//                JSONArray jsonArray =new JSONArray(new String(responseBody));
-//                size=jsonArray.length();
-//                for(int i=0;i<size;i++) {
-//                     Toast.makeText(Alldetails.this, jsonArray.get(i).toString(), Toast.LENGTH_LONG).show();
-//                    list.add(jsonArray.get(i).toString());
-//                    setter();
-//                }
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
+
             }
 
             @Override

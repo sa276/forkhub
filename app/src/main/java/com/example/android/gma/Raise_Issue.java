@@ -2,14 +2,14 @@ package com.example.android.gma;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.RadioButton;
 
-import static com.example.android.gma.Grade_generate.sms_contact;
+
 
 public class Raise_Issue extends AppCompatActivity {
 public static String msg="Hi, This is a kind request from the advisor of CSE-F to kindly update the marks for students at the earliest using the GMA app. Thank you !!";
@@ -41,13 +41,11 @@ public static String msg="Hi, This is a kind request from the advisor of CSE-F t
 
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            // Continue with delete operation
 
 
                         }
                     })
 
-                    // A null listener allows the button to dismiss the dialog and take no further action.
 
 
                     .show();
@@ -64,13 +62,11 @@ public static String msg="Hi, This is a kind request from the advisor of CSE-F t
 
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            // Continue with delete operation
 
 
                         }
                     })
 
-                    // A null listener allows the button to dismiss the dialog and take no further action.
 
 
                     .show();
@@ -87,13 +83,13 @@ public static String msg="Hi, This is a kind request from the advisor of CSE-F t
 
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            // Continue with delete operation
+
 
 
                         }
                     })
 
-                    // A null listener allows the button to dismiss the dialog and take no further action.
+
 
 
                     .show();

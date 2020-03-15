@@ -23,7 +23,7 @@ import static com.loopj.android.http.AsyncHttpClient.log;
 public class marks_updation extends AppCompatActivity {
 public static  int p1_marks,p2_marks,es_marks,at_marks,ca_marks;
 public static String p1,p2,es,at,ca;
-public static String f1,f2,f3;
+
     private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,9 +94,7 @@ public static String f1,f2,f3;
             {
                 progressDialog.setMessage("Updating...");
                 progressDialog.show();
-                //String type = "register";
-                //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-                //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
+
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 params.add("username", MainActivity.dummy_username);
@@ -114,24 +112,22 @@ public static String f1,f2,f3;
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
                         progressDialog.dismiss();
-                        //Toast.makeText(request.this, new String(responseBody), Toast.LENGTH_LONG).show();
 
                         new AlertDialog.Builder(marks_updation.this)
                                 .setTitle("ALERT")
                                 .setMessage("Marks Successfully updated for " + Alldetails.name_to_extract)
 
-                                // Specifying a listener allows you to take an action before dismissing the dialog.
-                                // The dialog is automatically dismissed when a dialog button is clicked.
+
                                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-                                        // Continue with delete operation
+
                                         Intent i = new Intent(marks_updation.this, User_Page.class);
                                         startActivity(i);
 
                                     }
                                 })
 
-                                // A null listener allows the button to dismiss the dialog and take no further action.
+
 
 
                                 .show();
@@ -155,9 +151,7 @@ public static String f1,f2,f3;
             {
                 progressDialog.setMessage("Updating...");
                 progressDialog.show();
-                //String type = "register";
-                //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-                //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
+
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 params.add("username", MainActivity.dummy_username);
@@ -181,8 +175,7 @@ public static String f1,f2,f3;
                                 .setTitle("ALERT")
                                 .setMessage("Marks Successfully updated for " + Alldetails.name_to_extract)
 
-                                // Specifying a listener allows you to take an action before dismissing the dialog.
-                                // The dialog is automatically dismissed when a dialog button is clicked.
+
                                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         // Continue with delete operation
@@ -192,7 +185,7 @@ public static String f1,f2,f3;
                                     }
                                 })
 
-                                // A null listener allows the button to dismiss the dialog and take no further action.
+
 
 
                                 .show();
@@ -215,9 +208,7 @@ public static String f1,f2,f3;
             {
                 progressDialog.setMessage("Updating...");
                 progressDialog.show();
-                //String type = "register";
-                //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-                //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
+
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 params.add("username", MainActivity.dummy_username);
@@ -235,24 +226,22 @@ public static String f1,f2,f3;
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
                         progressDialog.dismiss();
-                        //Toast.makeText(request.this, new String(responseBody), Toast.LENGTH_LONG).show();
+
 
                         new AlertDialog.Builder(marks_updation.this)
                                 .setTitle("ALERT")
                                 .setMessage("Marks Successfully updated for " + Alldetails.name_to_extract)
 
-                                // Specifying a listener allows you to take an action before dismissing the dialog.
-                                // The dialog is automatically dismissed when a dialog button is clicked.
+
                                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-                                        // Continue with delete operation
+
                                         Intent i = new Intent(marks_updation.this, User_Page.class);
                                         startActivity(i);
 
                                     }
                                 })
 
-                                // A null listener allows the button to dismiss the dialog and take no further action.
 
 
                                 .show();

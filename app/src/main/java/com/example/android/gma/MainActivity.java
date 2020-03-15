@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ProgressDialog progressDialog;
- //   private DatabaseReference mdatabase;
+
     public String uname =null, pword = null,type="login";
     public int flag=0;
     public  static  String dummy_username=null,dummy_password=null;
@@ -90,8 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 progressDialog.show();
 
 
-//                BackgroundWorker backgroundWorker =new BackgroundWorker(this);
-//                backgroundWorker.execute(type, dummy_username,dummy_password);
+
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 params.add("username",dummy_username);

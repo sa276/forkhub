@@ -4,10 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+
 import android.widget.ImageView;
-import android.widget.ListView;
+
 import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -18,17 +17,14 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.android.gma.User_Details.LVarea;
-import static com.example.android.gma.User_Details.tv1;
-import static com.example.android.gma.User_Details.tv5;
-import static com.example.android.gma.User_Details.tv6;
+
 import static com.loopj.android.http.AsyncHttpClient.log;
 
 public class student_details extends AppCompatActivity {
     public String LVarea = "Kuttralam";
     public String name, name_to_extract;
     public int size;
-    public String getName_to_extract;
+
 
     public ArrayList<String> list = new ArrayList<String>();
 
@@ -59,8 +55,6 @@ public class student_details extends AppCompatActivity {
                 LVarea = new String(responseBody);
                 log.v("name", LVarea);
                 displayall();
-                // Toast.makeText(User_Page.this,new String(responseBody),Toast.LENGTH_LONG).show();
-                //tv.setText("" + name + "!!!");
 
             }
 
@@ -91,24 +85,7 @@ public class student_details extends AppCompatActivity {
                 name = new String(responseBody);
                 log.v("name", name);
                 String[] data2 = name.split("_");
-                //Intent i=new Intent(student_details.this,student_details.class);
-                //startActivity(i);
-                //new AlertDialog.Builder(Alldetails.this)
-                //.setTitle("DETAILS")
-                //.setMessage("NAME                           " + data2[0] +"\n" + "ROLL NUMBER          " + data2[1] + "\n" + "DEPARTMENT           " + data2[2] + "\n" + "YEAR                            "
-                // + data2[3] + "\n" + "SECTION                     " + data2[4]
-                //+"\n" + "SUBJECT 1          " + data2[5] + "\n" + "PERIODICAL 1           " + data2[6] +"\n" + "PERIODICAL 2              " + data2[7] + "\n" + "GRACE MARKS          " + data2[8]
-                //     + "\n" + "REASON                      " + data2[9]
-                //)
 
-                // Specifying a listener allows you to take an action before dismissing the dialog.
-                // The dialog is automatically dismissed when a dialog button is clicked.
-
-
-                // A null listener allows the button to dismiss the dialog and take no further action.
-                //.setNegativeButton(android.R.string.yes, null)
-
-                //.show();
 
                 TextView tv1 = (TextView) findViewById(R.id.name_input);
                 TextView tv2 = (TextView) findViewById(R.id.roll_input);

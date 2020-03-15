@@ -44,7 +44,6 @@
         <menu>
 
             <item
-                android:id="@+id/nav_info"
                 android:icon="@drawable/recycle"
                 android:title="About" />
         </menu>
