@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -43,6 +44,7 @@ public class Grade_generate extends AppCompatActivity {
     public static int s1_gind,s2_gind,s3_gind;
 
     String grades[]={"O","A+","A","B+","B","C","P","F"};
+    double points[]={10,9.5,9,8,7,6,5};
 
     public static int s1_at,s2_at,s3_at,s1_p1,s1_p2,s1_es,s2_p1,s2_p2,s2_es,s3_p1,s3_p2,s3_es,s1_ca,s2_ca,s3_ca,gm,s1_cons_mark,s2_cons_mark,s3_cons_mark;
 
@@ -78,6 +80,10 @@ public class Grade_generate extends AppCompatActivity {
         b3.setVisibility(View.INVISIBLE);
 
         Button b1=findViewById(R.id.calc);
+
+        s2change=0;
+        s3change=0;
+        s1change=0;
 
         display();
     }
@@ -661,11 +667,17 @@ public class Grade_generate extends AppCompatActivity {
 
     }
 
+
     public void gmalloc(View view)
     {
         log.e("diff1",""+diff1);
         log.e("diff2",""+diff2);
         log.e("diff3",""+diff3);
+
+        if(gm==0)
+        {
+            Snackbar.make(view,"Sorry, " + name + " does not have grace marks to change the grades",Snackbar.LENGTH_LONG).setAction("ACTION",null).show();
+        }
 
         for(int i=0;i<3;i++)
         {
@@ -812,83 +824,128 @@ public class Grade_generate extends AppCompatActivity {
 
             b10.setVisibility(View.VISIBLE);
 
+            if(s3change==1)
+            {
+                if(s3_gind==0 ||s3_gind==1)
+                {
+                    s3ce=s3ce+2;
+                }
+                else
+                {
+                    s3ce=s3ce+4;
+                }
+            }
+        else if(s2change==1)
+        {
+            if(s2_gind==0 ||s2_gind==1)
+            {
+                s2ce= (float) (s2ce+1.5);
+            }
+            else
+            {
+                s2ce=s2ce+3;
+            }
+        }
 
+            else if(s1change==1)
+            {
+                if(s1_gind==0 || s1_gind==1)
+                {
+                    s1ce= (float) (s1ce+1.5);
+                }
+                else
+                {
+                    s1ce=s1ce+3;
+                }
+            }
+            TextView tv50=findViewById(R.id.s1ce_input);
+            TextView tv51=findViewById(R.id.s2ce_input);
+            TextView tv52=findViewById(R.id.s3ce_input);
+
+            tv50.setText("" + s1ce);
+            tv51.setText(""+s2ce);
+            tv52.setText(""+s3ce);
 
     }
 
     public void sms(View view)
     {
 
+        if(MainActivity.first=='E') {
 
-        sms_contact=sms_contact.trim();
-        String msg="Hey " + sms_name + "!!! The results are out." + "You have recieved the following grades :"+ "\n" +
-                "Software Engineering : " + grades[s1_gind] + "\n"+
-                "Networks : " + grades[s2_gind] + "\n"+
-                "Compiler Design : " + grades[s3_gind] + "\n"+
-                "Congratulations !!!";
 
-        SmsManager sms= null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.DONUT) {
-            sms = SmsManager.getDefault();
-            sms.sendTextMessage(sms_contact, null, msg, null,null);
+            sms_contact = sms_contact.trim();
+            String msg = "Hey " + sms_name + "!!! The results are out." + "You have recieved the following grades :" + "\n" +
+                    "Software Engineering : " + grades[s1_gind] + "\n" +
+                    "Networks : " + grades[s2_gind] + "\n" +
+                    "Compiler Design : " + grades[s3_gind] + "\n" +
+                    "Congratulations !!!";
+
+            SmsManager sms = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.DONUT) {
+                sms = SmsManager.getDefault();
+                sms.sendTextMessage(sms_contact, null, msg, null, null);
+            }
+
+
+            progressDialog.setMessage("Sending Report...");
+            progressDialog.show();
+            //String type = "register";
+            //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+            //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
+            AsyncHttpClient client = new AsyncHttpClient();
+            RequestParams params = new RequestParams();
+            params.add("username", MainActivity.dummy_username);
+            params.add("password", MainActivity.dummy_password);
+            Alldetails.name_to_extract.trim();
+            params.add("name", Alldetails.name_to_extract);
+
+            params.add("s1grade", s1grade);
+            params.add("s2grade", s2grade);
+            params.add("s2grade", s3grade);
+
+            log.e("contact", sms_contact);
+
+
+            client.post("https://quizkrieg.000webhostapp.com/grade_update.php", params, new AsyncHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+
+                    progressDialog.dismiss();
+                    //Toast.makeText(request.this, new String(responseBody), Toast.LENGTH_LONG).show();
+
+                    new AlertDialog.Builder(Grade_generate.this)
+                            .setTitle("ALERT")
+                            .setMessage("Students table is updated and report is successfully sent to " + Alldetails.name_to_extract)
+
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // Continue with delete operation
+                                    Intent i = new Intent(Grade_generate.this, User_Page.class);
+                                    startActivity(i);
+
+                                }
+                            })
+
+                            // A null listener allows the button to dismiss the dialog and take no further action.
+
+
+                            .show();
+
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                }
+            });
         }
-
-
-
-
-        progressDialog.setMessage("Sending Report...");
-        progressDialog.show();
-        //String type = "register";
-        //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-        params.add("username", MainActivity.dummy_username);
-        params.add("password", MainActivity.dummy_password);
-        Alldetails.name_to_extract.trim();
-        params.add("name",Alldetails.name_to_extract);
-
-        params.add("s1grade",s1grade);
-        params.add("s2grade",s2grade);
-        params.add("s2grade",s3grade);
-
-        log.e("contact",sms_contact);
-
-
-        client.post("https://quizkrieg.000webhostapp.com/grade_update.php", params, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-
-                progressDialog.dismiss();
-                //Toast.makeText(request.this, new String(responseBody), Toast.LENGTH_LONG).show();
-
-                new AlertDialog.Builder(Grade_generate.this)
-                        .setTitle("ALERT")
-                        .setMessage("Students table is updated and report is successfully sent to " + Alldetails.name_to_extract)
-
-                        // Specifying a listener allows you to take an action before dismissing the dialog.
-                        // The dialog is automatically dismissed when a dialog button is clicked.
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Continue with delete operation
-                                Intent i = new Intent(Grade_generate.this, User_Page.class);
-                                startActivity(i);
-
-                            }
-                        })
-
-                        // A null listener allows the button to dismiss the dialog and take no further action.
-
-
-                        .show();
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-            }
-        });
+        else
+        {
+            Snackbar.make(view,"Sorry, only exam controllers can send reports",Snackbar.LENGTH_LONG).setAction("ACTION",null).show();
+        }
 
     }
 

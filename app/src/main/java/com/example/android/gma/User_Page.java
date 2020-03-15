@@ -1,6 +1,7 @@
 package com.example.android.gma;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,6 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +61,24 @@ public class User_Page extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         Select();
+        setImage();
+    }
+
+    private void setImage() {
+
+        ImageView iv1=findViewById(R.id.user_image);
+        if(MainActivity.dummy_username.equals("SUB.Sabarish"))
+        {
+            iv1.setImageResource(R.drawable.sabarish);
+        }
+        else if(MainActivity.dummy_username.equals("SUB.Abirami"))
+        {
+            iv1.setImageResource(R.drawable.abirami);
+        }
+        if(MainActivity.dummy_username.equals("SUB.Padmavathi"))
+        {
+            iv1.setImageResource(R.drawable.padmavathi);
+        }
     }
 
     @Override
@@ -86,8 +106,9 @@ public class User_Page extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.log_out) {
+            Intent i=new Intent(User_Page.this,MainActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);
@@ -126,7 +147,21 @@ public class User_Page extends AppCompatActivity
             }
             // Toast.makeText(User_Page.this,"App in progress !!",Toast.LENGTH_LONG).show();
 
-        } else if (id == R.id.nav_update) {
+        }
+        else if(id==R.id.raise_issue)
+        {
+            if(MainActivity.first=='A')
+            {
+                Intent i=new Intent(User_Page.this,Raise_Issue.class);
+                startActivity(i);
+            }
+            else
+            {
+                Toast.makeText(User_Page.this, "Only for Class Advisors !!", Toast.LENGTH_LONG).show();
+            }
+        }
+
+        else if (id == R.id.nav_update) {
             if(MainActivity.first=='A' || MainActivity.first=='C' || MainActivity.first=='E')
             {
                 Toast.makeText(User_Page.this,"Sorry, this feature is only for subject handling faculties !!",Toast.LENGTH_LONG).show();
@@ -146,6 +181,8 @@ public class User_Page extends AppCompatActivity
                 Intent i=new Intent(User_Page.this,Interval.class);
                 startActivity(i);
             }
+
+
 
 
 

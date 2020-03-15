@@ -31,6 +31,12 @@
             android:icon="@drawable/grade"
             android:title="Grade Generate" />
 
+        <item
+            android:id="@+id/raise_issue"
+            android:icon="@drawable/issue"
+            android:title="Raise Issue" />
+
+
 
     </group>
 

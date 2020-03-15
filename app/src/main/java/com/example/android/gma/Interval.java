@@ -104,229 +104,233 @@ public class Interval extends AppCompatActivity {
         log.e("bmin",b_min);
         log.e("amin",a_min);
 
-        if(MainActivity.fourth=='S')
-        {
-            if(TextUtils.isEmpty(o_max) || TextUtils.isEmpty(o_min) || TextUtils.isEmpty(aplus_max) || TextUtils.isEmpty(aplus_min) ||
+        if(MainActivity.fourth=='S') {
+            if (TextUtils.isEmpty(o_max) || TextUtils.isEmpty(o_min) || TextUtils.isEmpty(aplus_max) || TextUtils.isEmpty(aplus_min) ||
                     TextUtils.isEmpty(a_min) || TextUtils.isEmpty(a_max) || TextUtils.isEmpty(bplus_max) || TextUtils.isEmpty(bplus_min) ||
                     TextUtils.isEmpty(b_max) || TextUtils.isEmpty(b_min) || TextUtils.isEmpty(c_max) || TextUtils.isEmpty(p_max) ||
-                    TextUtils.isEmpty(p_min) || TextUtils.isEmpty(f_max) || TextUtils.isEmpty(f_min) )
-            {
-                Toast.makeText(Interval.this,"Some details are missing",Toast.LENGTH_LONG).show();
+                    TextUtils.isEmpty(p_min) || TextUtils.isEmpty(f_max) || TextUtils.isEmpty(f_min)) {
+                Toast.makeText(Interval.this, "Some details are missing", Toast.LENGTH_LONG).show();
+            } else {
+
+                progressDialog.setMessage("Updating Intervals...");
+                progressDialog.show();
+                //String type = "register";
+                //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+                //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
+                AsyncHttpClient client = new AsyncHttpClient();
+                RequestParams params = new RequestParams();
+
+                params.add("username", MainActivity.dummy_username);
+                params.add("password", MainActivity.dummy_password);
+                params.add("name", "Software");
+                params.add("o_min", o_min);
+                params.add("o_max", o_max);
+                params.add("aplus_min", aplus_min);
+                params.add("aplus_max", aplus_max);
+                params.add("a_min", a_min);
+                params.add("a_max", a_max);
+                params.add("bplus_min", bplus_min);
+                params.add("bplus_max", bplus_max);
+                params.add("b_min", b_min);
+                params.add("b_max", b_max);
+                params.add("c_min", c_min);
+                params.add("c_max", c_max);
+
+                params.add("p_min", p_min);
+                params.add("p_max", p_max);
+                params.add("f_min", f_min);
+                params.add("f_max", f_max);
+
+
+                client.post("https://quizkrieg.000webhostapp.com/gma_s1_interval.php", params, new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+
+                        progressDialog.dismiss();
+                        //Toast.makeText(request.this, new String(responseBody), Toast.LENGTH_LONG).show();
+
+                        new AlertDialog.Builder(Interval.this)
+                                .setTitle("ALERT")
+                                .setMessage("Intervals updated successfully !")
+
+                                // Specifying a listener allows you to take an action before dismissing the dialog.
+                                // The dialog is automatically dismissed when a dialog button is clicked.
+                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // Continue with delete operation
+                                        Intent i = new Intent(Interval.this, User_Page.class);
+                                        startActivity(i);
+
+                                    }
+                                })
+
+                                // A null listener allows the button to dismiss the dialog and take no further action.
+
+
+                                .show();
+
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                    }
+                });
             }
-
-
-
-
-
-
-            progressDialog.setMessage("Updating Intervals...");
-            progressDialog.show();
-            //String type = "register";
-            //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-            //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
-            AsyncHttpClient client = new AsyncHttpClient();
-            RequestParams params = new RequestParams();
-
-            params.add("username", MainActivity.dummy_username);
-            params.add("password", MainActivity.dummy_password);
-            params.add("name","Software");
-            params.add("o_min",o_min);
-            params.add("o_max",o_max);
-            params.add("aplus_min",aplus_min);
-            params.add("aplus_max",aplus_max);
-            params.add("a_min",a_min);
-            params.add("a_max",a_max);
-            params.add("bplus_min",bplus_min);
-            params.add("bplus_max",bplus_max);
-            params.add("b_min",b_min);
-            params.add("b_max",b_max);
-            params.add("c_min",c_min);
-            params.add("c_max",c_max);
-
-            params.add("p_min",p_min);
-            params.add("p_max",p_max);
-            params.add("f_min",f_min);
-            params.add("f_max",f_max);
-
-
-
-
-
-            client.post("https://quizkrieg.000webhostapp.com/gma_s1_interval.php", params, new AsyncHttpResponseHandler() {
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-
-                    progressDialog.dismiss();
-                    //Toast.makeText(request.this, new String(responseBody), Toast.LENGTH_LONG).show();
-
-                    new AlertDialog.Builder(Interval.this)
-                            .setTitle("ALERT")
-                            .setMessage("Intervals updated successfully !" )
-
-                            // Specifying a listener allows you to take an action before dismissing the dialog.
-                            // The dialog is automatically dismissed when a dialog button is clicked.
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // Continue with delete operation
-                                    Intent i = new Intent(Interval.this, User_Page.class);
-                                    startActivity(i);
-
-                                }
-                            })
-
-                            // A null listener allows the button to dismiss the dialog and take no further action.
-
-
-                            .show();
-
-                }
-
-                @Override
-                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-                }
-            });
         }
 
         else if(MainActivity.fourth=='N')
         {
-            progressDialog.setMessage("Updating Intervals...");
-            progressDialog.show();
-            //String type = "register";
-            //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-            //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
-            AsyncHttpClient client = new AsyncHttpClient();
-            RequestParams params = new RequestParams();
 
-            params.add("username", MainActivity.dummy_username);
-            params.add("password", MainActivity.dummy_password);
-            params.add("name","Networks");
-            params.add("o_min",o_min);
-            params.add("o_max",o_max);
-            params.add("aplus_min",aplus_min);
-            params.add("aplus_max",aplus_max);
-            params.add("a_min",a_min);
-            params.add("a_max",a_max);
-            params.add("bplus_min",bplus_min);
-            params.add("bplus_max",bplus_max);
-            params.add("b_min",b_min);
-            params.add("b_max",b_max);
-            params.add("c_min",c_min);
-            params.add("c_max",c_max);
+            if (TextUtils.isEmpty(o_max) || TextUtils.isEmpty(o_min) || TextUtils.isEmpty(aplus_max) || TextUtils.isEmpty(aplus_min) ||
+                    TextUtils.isEmpty(a_min) || TextUtils.isEmpty(a_max) || TextUtils.isEmpty(bplus_max) || TextUtils.isEmpty(bplus_min) ||
+                    TextUtils.isEmpty(b_max) || TextUtils.isEmpty(b_min) || TextUtils.isEmpty(c_max) || TextUtils.isEmpty(p_max) ||
+                    TextUtils.isEmpty(p_min) || TextUtils.isEmpty(f_max) || TextUtils.isEmpty(f_min)) {
+                Toast.makeText(Interval.this, "Some details are missing", Toast.LENGTH_LONG).show();
+            }
+            else {
 
-            params.add("p_min",p_min);
-            params.add("p_max",p_max);
-            params.add("f_min",f_min);
-            params.add("f_max",f_max);
+                progressDialog.setMessage("Updating Intervals...");
+                progressDialog.show();
+                //String type = "register";
+                //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+                //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
+                AsyncHttpClient client = new AsyncHttpClient();
+                RequestParams params = new RequestParams();
 
+                params.add("username", MainActivity.dummy_username);
+                params.add("password", MainActivity.dummy_password);
+                params.add("name", "Networks");
+                params.add("o_min", o_min);
+                params.add("o_max", o_max);
+                params.add("aplus_min", aplus_min);
+                params.add("aplus_max", aplus_max);
+                params.add("a_min", a_min);
+                params.add("a_max", a_max);
+                params.add("bplus_min", bplus_min);
+                params.add("bplus_max", bplus_max);
+                params.add("b_min", b_min);
+                params.add("b_max", b_max);
+                params.add("c_min", c_min);
+                params.add("c_max", c_max);
 
-
-
-
-            client.post("https://quizkrieg.000webhostapp.com/gma_s2_interval.php", params, new AsyncHttpResponseHandler() {
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-
-                    progressDialog.dismiss();
-                    //Toast.makeText(request.this, new String(responseBody), Toast.LENGTH_LONG).show();
-
-                    new AlertDialog.Builder(Interval.this)
-                            .setTitle("ALERT")
-                            .setMessage("Intervals updated successfully !" )
-
-                            // Specifying a listener allows you to take an action before dismissing the dialog.
-                            // The dialog is automatically dismissed when a dialog button is clicked.
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // Continue with delete operation
-                                    Intent i = new Intent(Interval.this, User_Page.class);
-                                    startActivity(i);
-
-                                }
-                            })
-
-                            // A null listener allows the button to dismiss the dialog and take no further action.
+                params.add("p_min", p_min);
+                params.add("p_max", p_max);
+                params.add("f_min", f_min);
+                params.add("f_max", f_max);
 
 
-                            .show();
+                client.post("https://quizkrieg.000webhostapp.com/gma_s2_interval.php", params, new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
-                }
+                        progressDialog.dismiss();
+                        //Toast.makeText(request.this, new String(responseBody), Toast.LENGTH_LONG).show();
 
-                @Override
-                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        new AlertDialog.Builder(Interval.this)
+                                .setTitle("ALERT")
+                                .setMessage("Intervals updated successfully !")
 
-                }
-            });
+                                // Specifying a listener allows you to take an action before dismissing the dialog.
+                                // The dialog is automatically dismissed when a dialog button is clicked.
+                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // Continue with delete operation
+                                        Intent i = new Intent(Interval.this, User_Page.class);
+                                        startActivity(i);
+
+                                    }
+                                })
+
+                                // A null listener allows the button to dismiss the dialog and take no further action.
+
+
+                                .show();
+
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                    }
+                });
+            }
         }
 
-        else if(MainActivity.fourth=='C')
-        {
-            progressDialog.setMessage("Updating Intervals...");
-            progressDialog.show();
-            //String type = "register";
-            //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-            //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
-            AsyncHttpClient client = new AsyncHttpClient();
-            RequestParams params = new RequestParams();
+        else if(MainActivity.fourth=='C') {
 
-            params.add("username", MainActivity.dummy_username);
-            params.add("password", MainActivity.dummy_password);
-            params.add("name","Networks");
-            params.add("o_min",o_min);
-            params.add("o_max",o_max);
-            params.add("aplus_min",aplus_min);
-            params.add("aplus_max",aplus_max);
-            params.add("a_min",a_min);
-            params.add("a_max",a_max);
-            params.add("bplus_min",bplus_min);
-            params.add("bplus_max",bplus_max);
-            params.add("b_min",b_min);
-            params.add("b_max",b_max);
-            params.add("c_min",c_min);
-            params.add("c_max",c_max);
-            params.add("p_min",p_min);
-            params.add("p_max",p_max);
-            params.add("f_min",f_min);
-            params.add("f_max",f_max);
+            if (TextUtils.isEmpty(o_max) || TextUtils.isEmpty(o_min) || TextUtils.isEmpty(aplus_max) || TextUtils.isEmpty(aplus_min) ||
+                    TextUtils.isEmpty(a_min) || TextUtils.isEmpty(a_max) || TextUtils.isEmpty(bplus_max) || TextUtils.isEmpty(bplus_min) ||
+                    TextUtils.isEmpty(b_max) || TextUtils.isEmpty(b_min) || TextUtils.isEmpty(c_max) || TextUtils.isEmpty(p_max) ||
+                    TextUtils.isEmpty(p_min) || TextUtils.isEmpty(f_max) || TextUtils.isEmpty(f_min)) {
+                Toast.makeText(Interval.this, "Some details are missing", Toast.LENGTH_LONG).show();
+            } else {
 
 
+                progressDialog.setMessage("Updating Intervals...");
+                progressDialog.show();
+                //String type = "register";
+                //BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+                //backgroundWorker.execute(type,str_fn,str_contact,str_head,str_addr,str_consumption,str_un,str_password,str_age);
+                AsyncHttpClient client = new AsyncHttpClient();
+                RequestParams params = new RequestParams();
+
+                params.add("username", MainActivity.dummy_username);
+                params.add("password", MainActivity.dummy_password);
+                params.add("name", "Networks");
+                params.add("o_min", o_min);
+                params.add("o_max", o_max);
+                params.add("aplus_min", aplus_min);
+                params.add("aplus_max", aplus_max);
+                params.add("a_min", a_min);
+                params.add("a_max", a_max);
+                params.add("bplus_min", bplus_min);
+                params.add("bplus_max", bplus_max);
+                params.add("b_min", b_min);
+                params.add("b_max", b_max);
+                params.add("c_min", c_min);
+                params.add("c_max", c_max);
+                params.add("p_min", p_min);
+                params.add("p_max", p_max);
+                params.add("f_min", f_min);
+                params.add("f_max", f_max);
 
 
+                client.post("https://quizkrieg.000webhostapp.com/gma_s3_interval.php", params, new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
-            client.post("https://quizkrieg.000webhostapp.com/gma_s3_interval.php", params, new AsyncHttpResponseHandler() {
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        progressDialog.dismiss();
+                        //Toast.makeText(request.this, new String(responseBody), Toast.LENGTH_LONG).show();
 
-                    progressDialog.dismiss();
-                    //Toast.makeText(request.this, new String(responseBody), Toast.LENGTH_LONG).show();
+                        new AlertDialog.Builder(Interval.this)
+                                .setTitle("ALERT")
+                                .setMessage("Intervals updated successfully !")
 
-                    new AlertDialog.Builder(Interval.this)
-                            .setTitle("ALERT")
-                            .setMessage("Intervals updated successfully !" )
+                                // Specifying a listener allows you to take an action before dismissing the dialog.
+                                // The dialog is automatically dismissed when a dialog button is clicked.
+                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // Continue with delete operation
+                                        Intent i = new Intent(Interval.this, User_Page.class);
+                                        startActivity(i);
 
-                            // Specifying a listener allows you to take an action before dismissing the dialog.
-                            // The dialog is automatically dismissed when a dialog button is clicked.
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // Continue with delete operation
-                                    Intent i = new Intent(Interval.this, User_Page.class);
-                                    startActivity(i);
+                                    }
+                                })
 
-                                }
-                            })
-
-                            // A null listener allows the button to dismiss the dialog and take no further action.
+                                // A null listener allows the button to dismiss the dialog and take no further action.
 
 
-                            .show();
+                                .show();
 
-                }
+                    }
 
-                @Override
-                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
-                }
-            });
+                    }
+                });
+            }
         }
         }
 
